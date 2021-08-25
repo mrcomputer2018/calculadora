@@ -12,3 +12,25 @@
     /** Tira a borda externa ao ser clicado*/
     outline: none;
 }
+
+.Button:active {
+    background-color: #ccc;
+}
+
+.Button.double {
+    grid-column: span 2;
+}
+
+.Button.trple {
+    grid-column: span 3;
+}
+
+.Button.operation {
+    background-color: #fa8231;
+    color: white;
+}
+
+.Button.operation:active {
+    /** cc - para ficar mais escura a cor*/
+    background-color: #fa8231cc;
+}
