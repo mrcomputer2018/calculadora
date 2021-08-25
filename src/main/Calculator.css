@@ -1,0 +1,7 @@
+.Calculator {
+    height: 20rem;
+    width: 14.6875rem;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    background-color: red;
+}
