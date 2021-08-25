@@ -1,0 +1,14 @@
+:root {
+    --bg-button: #f0f0f0;
+    --borer-button: solid 1px #888;
+}
+
+.Button {
+    font-size: 1.4em;
+    background-color: var(--bg-button);
+    border: none;
+    border-right: var(--borer-button);
+    border-bottom: var(--borer-button);
+    /** Tira a borda externa ao ser clicado*/
+    outline: none;
+}
