@@ -31,7 +31,33 @@ class Calculator extends Component {
     }
 
     setOperation(operation) {
-        console.log(operation);
+        /* console.log(operation); */
+        if(this.state.current === 0){
+            /** Mudando o estado */
+            this.setState({ operation, current: 1,  clearDisplay: true })
+        }
+        else {
+            const equals = operation === '='
+            const currentOperation = this.state.operation
+
+            const values = [...this.state.values]
+            try {
+                /** Calculo do valor em cima da funcao EVAL */
+                values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`)
+            } catch (e) {
+                values[0] = this.state.values[0]
+            }
+            values[1] = 0
+            /** Colocando o estado para ser visto no display */
+            this.setState({
+                displayValue: values[0], 
+                operation: equals ? null : operation,
+                current: equals ? 0 : 1,
+                clearDisplay: !equals,
+                values
+            })
+            
+        }
     }
 
     addDigit(n) {
@@ -46,9 +72,9 @@ class Calculator extends Component {
         /** Mudando o estado da aplicacao */
         this.setState({ displayValue, clearDisplay: false })
         /** Se o valor for diferente de PoNTO vou armazenar */
-        if (n !== '.') {
+        if(n !== '.'){
             /** Atribuidoa I para nao ficar manupilando o estado */
-            const i = this.state.currentValue
+            const i = this.state.current
             const newValue = parseFloat(displayValue)
             /** Duplico meu array e transformo em values */
             const values = [...this.state.values]
